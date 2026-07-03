@@ -1,0 +1,310 @@
+/* --- 1. CẤU HÌNH BIẾN MÀU SẮC & FONT (Clean & Modern) --- */
+:root {
+  /* Màu chủ đạo: Xanh dương hiện đại (Royal Blue) - Contrast High */
+  --primary-color: #0958d9; 
+  --primary-hover: #003eb3;
+  --primary-light: #e6f4ff; /* Nền nhạt cho các item active */
+  
+  /* Gradient trẻ trung cho nút bấm/chat */
+  --primary-gradient: linear-gradient(135deg, #1677ff 0%, #0958d9 100%);
+  
+  /* Màu trung tính */
+  --text-color: #141414;      
+  --text-secondary: #595959;  
+  --bg-color: #f0f2f5;        
+  --card-bg: #ffffff;
+  
+  /* Bo góc & Đổ bóng */
+  --border-radius: 12px;
+  --border-radius-sm: 8px;
+  /* Shadow mềm mại, tạo cảm giác nổi nhẹ */
+  --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  
+  --header-height: 64px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* --- 2. CUSTOM SCROLLBAR (Thanh cuộn tinh tế) --- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* --- 3. GHI ĐÈ ANT DESIGN (Giao diện phẳng & Gọn) --- */
+
+/* === LAYOUT === */
+.ant-layout {
+  background: var(--bg-color) !important;
+  min-height: 100vh;
+}
+
+/* Sidebar (Menu trái) */
+.ant-layout-sider {
+  background: #fff !important;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.03);
+  z-index: 100; 
+}
+
+/* Header */
+.ant-layout-header {
+  backdrop-filter: blur(8px); /* Hiệu ứng kính mờ */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  padding: 0 24px !important;
+  height: var(--header-height) !important;
+  line-height: var(--header-height) !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Content Container (Khung nội dung chính) */
+.ant-layout-content {
+  /* Bỏ margin-left cứng để React xử lý dynamic */
+  padding: 0 !important; 
+  transition: all 0.2s ease;
+}
+
+/* === MENU STYLE (Floating Pill Style) === */
+.ant-menu {
+  background: transparent !important;
+  border-inline-end: none !important;
+  padding: 16px 8px;
+}
+
+.ant-menu-item {
+  border-radius: var(--border-radius-sm) !important;
+  margin-bottom: 4px !important;
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  transition: all 0.2s !important;
+}
+
+.ant-menu-item:hover {
+  color: var(--primary-color) !important;
+  background-color: var(--primary-light) !important;
+}
+
+.ant-menu-item-selected {
+  background-color: var(--primary-light) !important;
+  color: var(--primary-color) !important;
+  font-weight: 600;
+}
+/* Thanh active nhỏ bên trái */
+.ant-menu-item-selected::after {
+  border-right: 3px solid var(--primary-color) !important; 
+  transform: scaleY(1) !important;
+  opacity: 1 !important;
+}
+
+/* === CARD (Thẻ) === */
+.ant-card {
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--box-shadow);
+  border: 2px solid var(--primary-color) !important; 
+  background: var(--card-bg);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ant-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
+}
+
+.ant-card-head {
+  border-bottom: 1px solid #F1F5F9 !important;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* === INPUTS & BUTTONS === */
+.ant-input, .ant-picker, .ant-select-selector {
+  border-radius: var(--border-radius-sm) !important;
+  border-color: #E2E8F0 !important;
+  padding: 8px 12px !important;
+  box-shadow: none !important;
+}
+
+.ant-input:focus, .ant-input-focused {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
+}
+
+.ant-btn {
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+  box-shadow: none;
+  height: 38px;
+}
+
+.ant-btn-primary {
+  background: var(--primary-gradient);
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+}
+
+.ant-btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Tag */
+.ant-tag {
+  border-radius: 4px;
+  border: none;
+  padding: 2px 8px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* --- 4. CHAT UI (Bong bóng chat) --- */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  height: 100%;
+}
+
+.chat-bubble {
+  max-width: 75%;
+  padding: 10px 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  position: relative;
+  margin-bottom: 8px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Tin nhắn của tôi */
+.chat-bubble.me {
+  align-self: flex-end;
+  background: var(--primary-gradient);
+  color: #fff;
+  border-bottom-right-radius: 4px; 
+}
+
+/* Tin nhắn người khác */
+.chat-bubble.other {
+  align-self: flex-start;
+  background-color: #F1F5F9;
+  color: var(--text-color);
+  border-bottom-left-radius: 4px;
+}
+
+.chat-sender-name {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  margin-left: 4px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 5. CONTAINER NỘI DUNG (BOXED LAYOUT) --- */
+/* Đây là class quan trọng giúp web gọn gàng trên màn hình lớn */
+.site-layout-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  /* Đảm bảo chiều cao tối thiểu để không bị hụt chân trang */
+  min-height: calc(100vh - 160px); 
+  transition: all 0.3s ease;
+}
+
+
+/* --- 6. RESPONSIVE (MOBILE & TABLET) --- */
+
+/* Tablet & Mobile (Dưới 992px) */
+@media (max-width: 992px) {
+  /* Sidebar sẽ đè lên nội dung khi mở */
+  .ant-layout-sider {
+    position: fixed !important;
+    height: 100vh;
+    left: 0;
+    top: 0;
+  }
+
+  /* Điều chỉnh Header */
+  .ant-layout-header {
+    padding: 0 16px !important;
+  }
+}
+
+/* Mobile Only (Dưới 576px) */
+@media (max-width: 576px) {
+  /* Font chữ nhỏ lại chút */
+  body { font-size: 14px; }
+
+  /* Nội dung full màn hình trên điện thoại */
+  .site-layout-content {
+    padding: 16px;
+    box-shadow: none; 
+    background: transparent; /* Bỏ nền trắng để thoáng hơn */
+    border-radius: 0;
+  }
+  
+  /* Table: Cho phép cuộn ngang để không vỡ layout */
+  .ant-table-content {
+    overflow-x: auto;
+  }
+  
+  /* Chat: Bong bóng to ra để dễ đọc */
+  .chat-bubble {
+    max-width: 85%;
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+
+  /* Modal full màn hình trên điện thoại */
+  .ant-modal {
+    max-width: 100%;
+    margin: 0;
+    top: 0;
+    padding-bottom: 0;
+  }
+  .ant-modal-content {
+    border-radius: 0;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+  }
+  .ant-modal-body {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  /* Ẩn bớt các cột không quan trọng trong bảng nếu cần (dùng class .hide-on-mobile) */
+  .hide-on-mobile { display: none; }
+}
