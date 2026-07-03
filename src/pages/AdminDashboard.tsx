@@ -141,7 +141,7 @@ const AdminDashboard: React.FC = () => {
     ];
 
     return (
-        <div style={{ padding: 24 }}>
+        <div className="dashboard-container">
             <h2>Quản trị hệ thống</h2>
             
             <Tabs defaultActiveKey="1">

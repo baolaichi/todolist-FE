@@ -246,7 +246,7 @@ const MainLayout: React.FC = () => {
   const totalUnread = Object.values(unreadMap).reduce((a, b) => a + b, 0);
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ height: '100vh', overflow: 'hidden' }}>
       {contextHolder}
 
       {/* --- SIDEBAR --- */}
@@ -300,7 +300,7 @@ const MainLayout: React.FC = () => {
 
       <Layout>
         {/* --- CONTENT WRAPPER (TỰ ĐỘNG CĂN CHỈNH) --- */}
-        <div style={{ marginLeft: collapsed ? 80 : 260, transition: 'margin-left 0.2s', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <div style={{ marginLeft: collapsed ? 80 : 260, transition: 'margin-left 0.2s', display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}>
             
             {/* Header */}
             <Header style={{ padding: '0 24px', background: 'linear-gradient(90deg, #0958d9 0%, #003eb3 100%)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 10px rgba(9,88,217,0.3)', position: 'sticky', top: 0, zIndex: 99 }}>
@@ -325,10 +325,10 @@ const MainLayout: React.FC = () => {
             </Header>
 
             {/* Nội dung chính (Boxed Layout) */}
-            <Content style={{ margin: '24px 24px 0', flex: 1 }}>
+            <Content style={{ margin: '24px 24px 0', flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
                 {/* Giới hạn chiều rộng max 1200px để giao diện gọn gàng trên màn hình lớn */}
-                <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
-                    <div className="site-layout-content">
+                <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
+                    <div className="site-layout-content" style={{ display: 'flex', flexDirection: 'column', flex: 1, overflowY: 'auto' }}>
                          <Outlet />
                     </div>
                 </div>

@@ -238,8 +238,6 @@ body {
   padding: 24px;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  /* Đảm bảo chiều cao tối thiểu để không bị hụt chân trang */
-  min-height: calc(100vh - 160px); 
   transition: all 0.3s ease;
 }
 

@@ -147,7 +147,7 @@ const SurveyManagement: React.FC = () => {
     ];
 
     return (
-        <div style={{ padding: 24 }}>
+        <div className="dashboard-container">
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
                 <Title level={3}>Quản lý Bài Tập / Khảo Sát</Title>
                 <Button type="primary" size="large" icon={<PlusOutlined />} onClick={() => {
