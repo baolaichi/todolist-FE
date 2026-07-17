@@ -210,6 +210,34 @@ const MainLayout: React.FC = () => {
     window.location.href = '/';
   };
 
+  // --- AUTO LOGOUT ON INACTIVITY (15 phút) ---
+  useEffect(() => {
+    let timeoutId: any;
+
+    const resetTimer = () => {
+      clearTimeout(timeoutId);
+      // 15 phút = 15 * 60 * 1000 = 900000 ms
+      timeoutId = setTimeout(() => {
+        notification.warning({
+            message: 'Tự động đăng xuất',
+            description: 'Bạn đã không hoạt động trong 15 phút. Hệ thống tự động đăng xuất để bảo mật.',
+            duration: 10
+        });
+        handleLogout();
+      }, 900000); 
+    };
+
+    const events = ['mousemove', 'keydown', 'scroll', 'click'];
+    events.forEach(event => window.addEventListener(event, resetTimer));
+
+    resetTimer(); // Kích hoạt ngay lần đầu
+
+    return () => {
+      clearTimeout(timeoutId);
+      events.forEach(event => window.removeEventListener(event, resetTimer));
+    };
+  }, []);
+
   const userMenuItems = [
     { key: 'profile', label: 'Hồ sơ cá nhân', icon: <UserOutlined />, onClick: handleOpenProfile },
     { key: 'logout', label: 'Đăng xuất', icon: <LogoutOutlined />, danger: true, onClick: handleLogout },
